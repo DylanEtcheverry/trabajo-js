@@ -1,21 +1,18 @@
-// ===============================
-// CONSTANTE DEL SISTEMA
-// ===============================
 
-// clave que usaremos para guardar los productos en localStorage
+// CONSTANTE DEL SISTEMA
+
+
+// clave que se usara para guardar los productos en localStorage
 const STORAGE_KEY = "productos";
 
 
-// ===============================
 // ARRAY PRINCIPAL
-// ===============================
+
 
 let productos = [];
 
 
-// ===============================
 // FUNCION CONSTRUCTORA
-// ===============================
 
 function Producto(id, nombre, precio) {
     this.id = id;
@@ -23,10 +20,8 @@ function Producto(id, nombre, precio) {
     this.precio = precio;
 }
 
-
-// ===============================
 // CARGAR PRODUCTOS DEL STORAGE
-// ===============================
+
 
 function cargarProductos() {
 
@@ -38,10 +33,7 @@ function cargarProductos() {
 
 }
 
-
-// ===============================
 // GUARDAR PRODUCTOS EN STORAGE
-// ===============================
 
 function guardarProductos() {
 
@@ -50,9 +42,8 @@ function guardarProductos() {
 }
 
 
-// ===============================
 // MOSTRAR PRODUCTOS EN EL DOM
-// ===============================
+
 
 function mostrarProductos() {
 
@@ -79,9 +70,7 @@ function mostrarProductos() {
 }
 
 
-// ===============================
 // AGREGAR PRODUCTO
-// ===============================
 
 function agregarProducto() {
 
@@ -109,10 +98,8 @@ function agregarProducto() {
 
 }
 
-
-// ===============================
 // ELIMINAR PRODUCTO
-// ===============================
+
 
 function eliminarProducto(id) {
 
@@ -126,10 +113,8 @@ function eliminarProducto(id) {
 
 }
 
-
-// ===============================
 // EDITAR PRODUCTO
-// ===============================
+
 
 function editarProducto(id) {
 
@@ -148,17 +133,13 @@ function editarProducto(id) {
 
 }
 
-
-// ===============================
 // EVENTO BOTON AGREGAR
-// ===============================
+
 
 document.getElementById("agregar").addEventListener("click", agregarProducto);
 
 
-// ===============================
 // EVENTOS DE LOS BOTONES EDITAR / ELIMINAR
-// ===============================
 
 document.addEventListener("click", function(e) {
 
@@ -178,10 +159,8 @@ document.addEventListener("click", function(e) {
 
 });
 
-
-// ===============================
 // INICIAR APP
-// ===============================
+
 
 cargarProductos();
 mostrarProductos();
