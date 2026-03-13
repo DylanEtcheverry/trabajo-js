@@ -3,7 +3,7 @@
 
 
 // clave que se usara para guardar los productos en localStorage
-const STORAGE_KEY = "productos";
+ const STORAGE_KEY = "productos";
 
 
 // ARRAY PRINCIPAL
@@ -38,7 +38,7 @@ function cargarProductos() {
 function guardarProductos() {
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify(productos));
-
+    console.log("Guardado en localStorage", productos);
 }
 
 
