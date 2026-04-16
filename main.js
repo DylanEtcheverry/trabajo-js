@@ -1,6 +1,6 @@
 
 // CONSTANTE DEL SISTEMA
-
+let valorDolar= 1000;
 
 // clave que se usara para guardar los productos en localStorage
  const STORAGE_KEY = "productos";
@@ -20,6 +20,20 @@ function Producto(id, nombre, precio) {
     this.precio = precio;
 }
 
+function obtenerDolar() {
+
+    fetch("https://api.bluelytics.com.ar/v2/latest")
+        .then(response => response.json())
+        .then(data => {
+            valorDolar = data.blue.value_sell;
+            console.log("Dólar:", valorDolar);
+            mostrarProductos(); // actualiza precios
+        })
+        .catch(error => {
+            console.log("Error con API", error);
+        });
+
+}
 // CARGAR PRODUCTOS DEL STORAGE
 
 
@@ -48,17 +62,19 @@ function guardarProductos() {
 function mostrarProductos() {
 
     let lista = document.getElementById("listaProductos");
-
-    // limpiamos la lista antes de volver a dibujarla
     lista.innerHTML = "";
 
-    // función de orden superior
     productos.forEach(function(producto) {
+
+        let precioPesos = producto.precio;
+        let precioDolares = (precioPesos / valorDolar).toFixed(2);
 
         let li = document.createElement("li");
 
         li.innerHTML = `
-        ${producto.nombre} - $${producto.precio}
+        ${producto.nombre} 
+        - $${precioPesos} ARS 
+        - USD ${precioDolares}
         <button class="eliminar" data-id="${producto.id}">Eliminar</button>
         <button class="editar" data-id="${producto.id}">Editar</button>
         `;
@@ -161,6 +177,6 @@ document.addEventListener("click", function(e) {
 
 // INICIAR APP
 
-
+obtenerDolar();
 cargarProductos();
 mostrarProductos();
